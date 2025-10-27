@@ -115,4 +115,39 @@
       display: none;
     }
   }
+
+  @media (max-width: 768px) {
+    #infinite-grid-menu-canvas {
+      cursor: pointer;
+    }
+
+    .action-button {
+      width: 55px;
+      height: 55px;
+      border: 3px solid #000;
+    }
+
+    .action-button.active {
+      bottom: 2.5em;
+    }
+
+    .action-button-icon {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .action-button {
+      width: 50px;
+      height: 50px;
+    }
+
+    .action-button.active {
+      bottom: 2em;
+    }
+
+    .action-button-icon {
+      font-size: 22px;
+    }
+  }
   

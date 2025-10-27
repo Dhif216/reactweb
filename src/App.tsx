@@ -20,30 +20,29 @@ const SOCIAL_ITEMS = [
     { label: "GitHub", ariaLabel: "Visit GitHub profile", link: "https://github.com/dhif216" },
 ];
 
-// Using stable placeholder links
 const PROJECTS_DATA = [
-    { image: 'https://via.placeholder.com/512/00ffff/000000?text=Movies', 
-        link: 'https://dhif216.github.io/movies/', 
+    { image: '/src/assets/project-movies.jpeg',
+        link: 'https://dhif216.github.io/movies/',
         title: 'Movie Streaming UI', description: 'Entertainment Design' },
-    
-    { image: 'https://via.placeholder.com/512/ff00ff/000000?text=Website', 
-        link: 'https://dhif216.github.io/website/', 
+
+    { image: '/src/assets/project-saas.png',
+        link: 'https://dhif216.github.io/website/',
         title: 'Modern Website', description: 'Responsive Web Development' },
-    
-    { image: 'https://via.placeholder.com/512/ffff00/000000?text=Hipped', 
-        link: 'https://dhif216.github.io/hippi/', 
+
+    { image: '/src/assets/project-ecommerce.jpg',
+        link: 'https://dhif216.github.io/hippi/',
         title: 'Hippi Site', description: 'E-commerce Redesign & Branding' },
-    
-    { image: 'https://via.placeholder.com/512/00ff00/000000?text=Gamer', 
-        link: 'https://dhif216.github.io/gamer/', 
+
+    { image: '/src/assets/project-gamer.png',
+        link: 'https://dhif216.github.io/gamer/',
         title: 'Gamer Hub', description: 'Social Platform UX/UI' },
-    
-    { image: 'https://via.placeholder.com/512/0000ff/000000?text=Tour', 
-        link: 'https://dhif216.github.io/Local-Horse-Tour-Website-Redesign/', 
+
+    { image: '/src/assets/project-horse.jpg',
+        link: 'https://dhif216.github.io/Local-Horse-Tour-Website-Redesign/',
         title: 'Horse Tour Booking', description: 'Local Business Website Redesign' },
-    
-    { image: 'https://via.placeholder.com/512/ff8000/000000?text=Portfolio', 
-        link: 'https://dhif216.github.io/portfolio.v1/', 
+
+    { image: '/src/assets/project-portfolio.png',
+        link: 'https://dhif216.github.io/portfolio.v1/',
         title: 'Portfolio V1', description: 'Initial Self-Branding Project' },
 ];
 

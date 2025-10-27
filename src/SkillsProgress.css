@@ -1,53 +1,190 @@
-/* In src/SkillsProgress.css */
-
 .skills-progress-wrapper {
-    width: 100%;
-    padding: 30px;
-    /* Neon Ice Blue Long Card Style */
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 16px;
-    border: 1px solid rgba(100, 181, 246, 0.5); /* Light blue border */
-    box-shadow: 0 0 20px rgba(100, 181, 246, 0.4), 0 0 8px rgba(100, 181, 246, 0.2); /* Neon glow */
+  width: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 40, 0.7) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  box-shadow: 0 10px 40px rgba(100, 181, 246, 0.2);
+  backdrop-filter: blur(10px);
 }
 
-.skill-item {
-    margin-bottom: 25px;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.skill-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #f0f0f0;
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(100, 181, 246, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(100, 181, 246, 0.5);
+  box-shadow: 0 15px 35px rgba(100, 181, 246, 0.3);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-circle-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.skill-circle {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover .skill-circle {
+  transform: scale(1.05);
+}
+
+.skill-circle-progress {
+  filter: drop-shadow(0 0 8px rgba(100, 181, 246, 0.6));
+  transition: all 0.3s ease;
+}
+
+.skill-percentage-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.skill-percentage {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #64b5f6;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+}
+
+.skill-percentage-symbol {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #64b5f6;
+  margin-left: 2px;
+  opacity: 0.8;
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
 }
 
 .skill-name {
-    color: #c0c0c0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
-.skill-count {
-    color: #64b5f6; /* Ice Blue count number */
+.skill-category {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64b5f6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  background: rgba(100, 181, 246, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 181, 246, 0.2);
 }
 
-/* Progress Bar Styling */
-.skill-bar-track {
-    width: 100%;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Dark, subtle track */
-    border-radius: 5px;
-    overflow: hidden;
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    padding: 20px;
+  }
+
+  .skill-circle-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-percentage {
+    font-size: 1.6rem;
+  }
+
+  .skill-percentage-symbol {
+    font-size: 1rem;
+  }
+
+  .skill-name {
+    font-size: 0.95rem;
+  }
+
+  .skill-category {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
 }
 
-.skill-progress-bar {
-    height: 100%;
-    /* Gradient for the bar */
-    background: linear-gradient(90deg, #64b5f6 0%, #42a5f5 100%);
-    border-radius: 5px;
-    
-    /* Neon shadow for the progress bar itself */
-    box-shadow: 0 0 8px #64b5f6; 
-    
-    transition: width 0.3s ease-out; 
+@media (max-width: 480px) {
+  .skills-progress-wrapper {
+    padding: 30px 15px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .skill-card {
+    padding: 15px;
+  }
+
+  .skill-circle-container {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill-circle {
+    width: 90px;
+    height: 90px;
+  }
 }

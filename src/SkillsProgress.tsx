@@ -1,5 +1,3 @@
-// In src/SkillsProgress.tsx
-
 import React, { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,48 +8,70 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface Skill {
   name: string;
-  level: number; // Percentage 0-100
+  level: number;
+  category: string;
 }
 
 const SKILLS_DATA: Skill[] = [
-  { name: 'UX Strategy', level: 95 },
-  { name: 'Figma & Prototyping', level: 90 },
-  { name: 'User Research', level: 85 },
-  { name: 'Front-end UI (React)', level: 80 },
+  { name: 'UX Strategy', level: 95, category: 'Design' },
+  { name: 'Figma & Prototyping', level: 90, category: 'Design' },
+  { name: 'User Research', level: 85, category: 'Research' },
+  { name: 'React & TypeScript', level: 88, category: 'Development' },
+  { name: 'UI Animation', level: 92, category: 'Design' },
+  { name: 'Design Systems', level: 87, category: 'Design' },
 ];
 
 const SkillsProgress: React.FC = () => {
   const containerRef = useRef(null);
-  
+
   useGSAP(() => {
-    
-    const bars = gsap.utils.toArray<HTMLElement>('.skill-progress-bar');
-    const counts = gsap.utils.toArray<HTMLElement>('.skill-count-number');
-    
-    bars.forEach((bar, index) => {
+    const cards = gsap.utils.toArray<HTMLElement>('.skill-card');
+    const circles = gsap.utils.toArray<HTMLElement>('.skill-circle-progress');
+    const counts = gsap.utils.toArray<HTMLElement>('.skill-percentage');
+
+    cards.forEach((card, index) => {
       const level = SKILLS_DATA[index].level;
-      
-      // Animate the bar width
-      gsap.fromTo(bar, 
-        { width: '0%' }, 
-        { 
-          width: `${level}%`,
-          duration: 1.5,
+      const circumference = 2 * Math.PI * 45;
+      const offset = circumference - (level / 100) * circumference;
+
+      gsap.fromTo(card,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: index * 0.1,
           ease: 'power2.out',
           scrollTrigger: {
-            trigger: bar,
-            start: 'top 85%', // Trigger when bar enters the bottom 15% of the viewport
+            trigger: card,
+            start: 'top 90%',
             toggleActions: 'play none none none',
             once: true,
           }
         }
       );
 
-      // Animate the count-up number
+      gsap.fromTo(circles[index],
+        { strokeDashoffset: circumference },
+        {
+          strokeDashoffset: offset,
+          duration: 1.5,
+          delay: index * 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        }
+      );
+
       const targetCount = { val: 0 };
       gsap.to(targetCount, {
         val: level,
         duration: 1.5,
+        delay: index * 0.1,
         ease: 'power2.out',
         onUpdate: () => {
           if (counts[index]) {
@@ -59,34 +79,65 @@ const SkillsProgress: React.FC = () => {
           }
         },
         scrollTrigger: {
-            trigger: bar,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-            once: true,
-          }
+          trigger: card,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          once: true,
+        }
       });
     });
-
   }, { scope: containerRef, dependencies: [] });
+
+  const circumference = 2 * Math.PI * 45;
 
   return (
     <div ref={containerRef} className="skills-progress-wrapper">
-      {SKILLS_DATA.map((skill) => (
-        <div key={skill.name} className="skill-item">
-          <div className="skill-header">
-            <span className="skill-name">{skill.name}</span>
-            <span className="skill-count">
-                <span className="skill-count-number">0</span>%
-            </span>
+      <div className="skills-grid">
+        {SKILLS_DATA.map((skill) => (
+          <div key={skill.name} className="skill-card">
+            <div className="skill-circle-container">
+              <svg className="skill-circle" width="120" height="120">
+                <circle
+                  className="skill-circle-bg"
+                  cx="60"
+                  cy="60"
+                  r="45"
+                  fill="none"
+                  stroke="rgba(100, 181, 246, 0.1)"
+                  strokeWidth="8"
+                />
+                <circle
+                  className="skill-circle-progress"
+                  cx="60"
+                  cy="60"
+                  r="45"
+                  fill="none"
+                  stroke="url(#gradient)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={circumference}
+                  transform="rotate(-90 60 60)"
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#64b5f6" />
+                    <stop offset="100%" stopColor="#42a5f5" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="skill-percentage-container">
+                <span className="skill-percentage">0</span>
+                <span className="skill-percentage-symbol">%</span>
+              </div>
+            </div>
+            <div className="skill-info">
+              <h3 className="skill-name">{skill.name}</h3>
+              <span className="skill-category">{skill.category}</span>
+            </div>
           </div>
-          <div className="skill-bar-track">
-            <div 
-              className="skill-progress-bar"
-              style={{ width: '0%' }} 
-            ></div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -340,23 +340,363 @@
     text-align: center;
     font-size: 0.9rem;
     color: #888;
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(100, 181, 246, 0.1);
 }
-/* In src/App.css (Add this layout fix) */
 
 /* 🟢 FIX: Ensure content is not forced off-screen by the fixed menu wrapper */
 .staggered-menu-wrapper {
-  /* If the menu is fixed, it should NOT occupy space in the document flow */
-  position: absolute !important; 
+  position: absolute !important;
   top: 0;
   left: 0;
 }
 
 /* 🟢 FIX: Ensure the Hero and Projects content is allowed to fill the rest of the screen */
 .hero-section, .about-section, .projects-section {
-  /* This overrides any global width/margin rules from the menu's CSS */
   width: 100%;
-  margin-left: 0 !important; 
+  margin-left: 0 !important;
   padding-left: 0 !important;
+}
+
+/* ---------------------------------------------------- */
+/* MOBILE RESPONSIVE OPTIMIZATIONS */
+/* ---------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .designer-name-mouadh,
+  .designer-name-dhif {
+    font-size: 4rem;
+    letter-spacing: -2px;
+  }
+
+  .designer-role-text {
+    font-size: 1.3rem;
+  }
+
+  .about-header,
+  .projects-main-header,
+  .contact-header {
+    font-size: 2.5rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .designer-name-mouadh,
+  .designer-name-dhif {
+    font-size: 3.5rem;
+    margin: 0 0 -20px 0;
+  }
+
+  .designer-role-text {
+    font-size: 1.2rem;
+    margin: 15px 0 30px 0;
+  }
+
+  .profile-photo-placeholder {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 30px;
+  }
+
+  .cta-button {
+    padding: 14px 35px;
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding: 80px 20px;
+  }
+
+  .about-content {
+    padding: 20px;
+  }
+
+  .about-header,
+  .projects-main-header,
+  .contact-header {
+    font-size: 2.2rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.3rem;
+  }
+
+  .projects-section {
+    padding: 60px 20px 120px;
+  }
+
+  .projects-grid {
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 0 15px;
+    min-height: 90vh;
+  }
+
+  .designer-name-mouadh,
+  .designer-name-dhif {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin: 0 0 -15px 0;
+  }
+
+  .designer-name-dhif {
+    margin-bottom: 15px;
+  }
+
+  .designer-role-text {
+    font-size: 1.1rem;
+    margin: 10px 0 25px 0;
+  }
+
+  .profile-photo-placeholder {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 25px;
+    border: 3px solid rgba(100, 181, 246, 0.5);
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+
+  .about-section {
+    padding: 60px 15px;
+  }
+
+  .about-content {
+    padding: 15px;
+  }
+
+  .about-header,
+  .projects-main-header,
+  .contact-header {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .about-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .skills-showcase-container {
+    margin-top: 40px;
+    padding: 15px;
+  }
+
+  .projects-section {
+    padding: 50px 15px 100px;
+  }
+
+  .projects-grid {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .project-card {
+    min-height: 220px;
+  }
+
+  .card-overlay {
+    padding: 15px;
+  }
+
+  .card-overlay h3 {
+    font-size: 1.3rem;
+  }
+
+  .card-overlay p {
+    font-size: 0.85rem;
+  }
+
+  .contact-section {
+    padding: 80px 15px;
+  }
+
+  .contact-content {
+    padding: 15px;
+  }
+
+  .contact-subtext {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  .form-submit-btn {
+    width: 70%;
+  }
+
+  .footer-section {
+    font-size: 0.85rem;
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 85vh;
+  }
+
+  .designer-name-mouadh,
+  .designer-name-dhif {
+    font-size: 2.5rem;
+    margin: 0 0 -10px 0;
+  }
+
+  .designer-name-dhif {
+    margin-bottom: 10px;
+  }
+
+  .designer-role-text {
+    font-size: 1rem;
+    margin: 8px 0 20px 0;
+  }
+
+  .profile-photo-placeholder {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+  }
+
+  .cta-button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+
+  .about-section {
+    padding: 50px 12px;
+  }
+
+  .about-header,
+  .projects-main-header,
+  .contact-header {
+    font-size: 1.8rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+
+  .projects-section {
+    padding: 40px 12px 80px;
+  }
+
+  .projects-grid {
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: 200px;
+  }
+
+  .card-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-section {
+    padding: 60px 12px;
+  }
+
+  .contact-header {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .contact-subtext {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .form-submit-btn {
+    width: 85%;
+    padding: 12px 25px;
+  }
+
+  .footer-section {
+    font-size: 0.8rem;
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .designer-name-mouadh,
+  .designer-name-dhif {
+    font-size: 2.2rem;
+  }
+
+  .designer-role-text {
+    font-size: 0.95rem;
+  }
+
+  .about-header,
+  .projects-main-header,
+  .contact-header {
+    font-size: 1.6rem;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+.infinite-menu-container {
+  width: 100%;
+  min-height: 600px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .infinite-menu-container {
+    min-height: 500px;
+  }
+
+  .face-title {
+    font-size: 3rem;
+    left: 1.2em;
+  }
+
+  .face-description {
+    font-size: 1.2rem;
+    max-width: 8ch;
+  }
+
+  .action-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .action-button-icon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .infinite-menu-container {
+    min-height: 400px;
+  }
 }
