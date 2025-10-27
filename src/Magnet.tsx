@@ -1,6 +1,7 @@
 // Place this entire block into src/Magnet.tsx
 
-import React, { useState, useEffect, useRef, ReactNode, HTMLAttributes } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 
 interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
