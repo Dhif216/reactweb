@@ -22,11 +22,11 @@ const SOCIAL_ITEMS = [
 
 // Using stable placeholder links
 const PROJECTS_DATA = [
-    { image: 'https://cdn.prod.website-files.com/63f8ca18cae25871c18fd72d/655be5566efbe69f39743a3e_darktech-project-saas-website-design-agency.png', 
+    { image: 'https://via.placeholder.com/512/00ffff/000000?text=Movies', 
         link: 'https://dhif216.github.io/movies/', 
         title: 'Movie Streaming UI', description: 'Entertainment Design' },
     
-    { image: 'https://cdn.prod.website-files.com/64aebfb24fbc4324015d09d6/64eda9cf29f3b2cfe893514d_64eda7ae3b92aebcde33aab0_SaaS%20Website%20Best%20Practices_%2012%20Essential%20Elements%20for%202023_images.webp', 
+    { image: 'https://via.placeholder.com/512/ff00ff/000000?text=Website', 
         link: 'https://dhif216.github.io/website/', 
         title: 'Modern Website', description: 'Responsive Web Development' },
     
@@ -163,16 +163,20 @@ function App() {
                         Have a project in mind or just want to say hello? Send me a message!
                     </p>
 
-                    <form className="contact-form">
+                    <form className="contact-form" 
+                          action="YOUR_FORMSPREE_ENDPOINT" // ⬅️ CRITICAL: Replace with your actual Formspree URL
+                          method="POST">
                         <input
                             type="email"
                             placeholder="Your Email Address"
                             className="form-input"
+                            name="_replyto"
                             required
                         />
                         <textarea
                             placeholder="Your Message..."
                             className="form-textarea"
+                            name="message"
                             rows={5}
                             required
                         />
